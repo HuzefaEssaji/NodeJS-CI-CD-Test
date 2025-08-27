@@ -1,0 +1,51 @@
+name: Forge Make (Windows from Ubuntu self-hosted)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed if you later add a GitHub Publisher
+
+jobs:
+  make-win:
+    runs-on: [self-hosted, linux, electron]   # match your runner labels
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          clean: true
+
+      - name: Set up Node.js (npm cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      # Safety net: ensure prerequisites; harmless if already present.
+      - name: Ensure Wine/Mono toolchain
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y python3 build-essential git wine64 wine32 mono-complete
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+
+      - name: Make Windows distributables (Squirrel + zip)
+        run: npx electron-forge make --platform=win32 --arch=x64
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: win-artifacts
+          path: out/make/**/*
+          if-no-files-found: error
