@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&MT International - Business Proposal</title>
+    <style>
+        @page {
+            margin: 0.5in;
+            size: A4;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+        
+        .page {
+            min-height: 100vh;
+            page-break-after: always;
+            padding: 20px;
+        }
+        
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        /* Updated Brand Colors matching H&MT logo */
+        .brand-primary { color: #2E8B8B; }
+        .brand-secondary { color: #1E5F7A; }
+        .brand-accent { color: #34A298; }
+        .bg-brand { background: linear-gradient(135deg, #2E8B8B 0%, #1E5F7A 100%); }
+        .bg-light { background: #f8fafc; }
+        
+        /* Header with Logo */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: linear-gradient(135deg, #2E8B8B 0%, #1E5F7A 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-container {
+            width: 120px;
+            height: 80px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2E8B8B;
+            text-align: center;
+            line-height: 1.1;
+        }
+        
+        .logo-amp {
+            color: #1E5F7A;
+            font-size: 28px;
+        }
+        
+        .logo-subtitle {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8px;
+            color: #2E8B8B;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        .logo-icon {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 40px;
+            background: linear-gradient(to bottom, 
+                #888 0%, #888 25%, 
+                #aaa 25%, #aaa 50%, 
+                #888 50%, #888 75%, 
+                #aaa 75%, #aaa 100%);
+            border-radius: 4px;
+        }
+        
+        .company-info {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .company-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .date-info {
+            text-align: right;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        /* Charts and Graphics */
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        
+        .chart {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #2E8B8B;
+        }
+        
+        .metric {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2E8B8B;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+        
+        /* Growth Chart */
+        .growth-chart {
+            width: 100%;
+            height: 120px;
+            background: #f8fafc;
+            border-radius: 8px;
+            position: relative;
+            margin: 15px 0;
+        }
+        
+        .bar {
+            position: absolute;
+            bottom: 10px;
+            background: linear-gradient(to top, #2E8B8B, #34A298);
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .bar1 { left: 10%; width: 12%; height: 15px; }
+        .bar2 { left: 25%; width: 12%; height: 25px; }
+        .bar3 { left: 40%; width: 12%; height: 45px; }
+        .bar4 { left: 55%; width: 12%; height: 50px; }
+        .bar5 { left: 70%; width: 12%; height: 85px; }
+        
+        .year-labels {
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+        
+        /* Pie Chart */
+        .pie-chart {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(
+                #2E8B8B 0% 70%,
+                #1E5F7A 70% 85%,
+                #34A298 85% 100%
+            );
+            margin: 0 auto 10px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 11px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        /* Sections */
+        .section {
+            margin: 20px 0;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2E8B8B;
+            border-bottom: 2px solid #34A298;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .two-column {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #34A298 0%, #2E8B8B 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+        }
+        
+        .highlight-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .investment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .investment-table th,
+        .investment-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 12px;
+        }
+        
+        .investment-table th {
+            background: #f1f5f9;
+            color: #2E8B8B;
+            font-weight: bold;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            border: 2px solid #2E8B8B;
+        }
+        
+        .contact-info h3 {
+            color: #2E8B8B;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 14px;
+        }
+        
+        @media print {
+            .page { page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+    <div class="header">
+        <div class="logo-section">
+            <div class="logo-container">
+                <div class="logo-icon"></div>
+                <div class="logo-text">H<span class="logo-amp">&</span>MT</div>
+                <div class="logo-subtitle">INTERNATIONAL</div>
+            </div>
+        </div>
+        <div class="company-info">
+            <div class="company-name">H&MT INTERNATIONAL</div>
+            <div class="tagline">Heat & Mass Transfer Solutions</div>
+        </div>
+        <div class="date-info">
+            <div>Business Proposal</div>
+            <div>September 2025</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Executive Summary</h2>
+        <p><strong>H&MT International</strong>, established in 2020, has emerged as a premier manufacturer of Process & Mass Transfer Equipment with <strong>10x growth in 2 years</strong> and established export presence in Middle East.</p>
+    </div>
+
+    <div class="chart-container">
+        <div class="chart">
+            <div class="metric">₹29.1L</div>
+            <div class="metric-label">Current Turnover<br>(FY 2024-25)</div>
+        </div>
+        <div class="chart">
+            <div class="metric">₹57.9L</div>
+            <div class="metric-label">Confirmed<br>Order Book</div>
+        </div>
+        <div class="chart">
+            <div class="metric">15+</div>
+            <div class="metric-label">Years Combined<br>Experience</div>
+        </div>
+        <div class="chart">
+            <div class="metric">3</div>
+            <div class="metric-label">Export<br>Countries</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Revenue Growth Trajectory</h3>
+        <div class="growth-chart">
+            <div class="bar bar1">2.5L</div>
+            <div class="bar bar2">20L</div>
+            <div class="bar bar3">28L</div>
+            <div class="bar bar4">29L</div>
+            <div class="bar bar5">70L*</div>
+        </div>
+        <div class="year-labels">
+            <span>2021-22</span>
+            <span>2022-23</span>
+            <span>2023-24</span>
+            <span>2024-25</span>
+            <span>2025-26*</span>
+        </div>
+    </div>
+
+    <div class="two-column">
+        <div class="column">
+            <h3 class="section-title">Key Strengths</h3>
+            <ul>
+                <li><strong>Specialized Expertise:</strong> Demister pads, structured packings, column internals</li>
+                <li><strong>Premium Clients:</strong> Ambani Orgochem, IOCL, Lupin, Modern Coach Factory</li>
+                <li><strong>Export Ready:</strong> Clients in Saudi Arabia, Bahrain, UAE</li>
+                <li><strong>Integrated Solutions:</strong> Design to commissioning capabilities</li>
+                <li><strong>Cost Competitive:</strong> 40-45% gross margins</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3 class="section-title">Revenue by Segment (FY 23-24)</h3>
+            <div class="pie-chart"></div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2E8B8B;"></div>
+                    <span>Equipment (70%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1E5F7A;"></div>
+                    <span>Services (25%)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #34A298;"></div>
+                    <span>Internals (5%)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <div class="highlight-number">₹84,00,000 Cr</div>
+        <div>Indian Manufacturing Market by 2040 - Growing at 12-15% CAGR</div>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <div class="section">
+        <h2 class="section-title">Market Opportunity & Strategic Positioning</h2>
+    </div>
+
+    <div class="two-column">
+        <div class="column">
+            <h3 class="section-title">Target Markets</h3>
+            <div style="margin-bottom: 15px;">
+                <strong class="brand-primary">Domestic Market (85-90%)</strong>
+                <ul>
+                    <li>Chemical & Petrochemical: ₹25+ Cr projects</li>
+                    <li>Pharmaceutical: Growing compliance needs</li>
+                    <li>Oil & Gas: Refinery modernization</li>
+                    <li>Water Treatment: Environmental regulations</li>
+                </ul>
+            </div>
+            <div>
+                <strong class="brand-secondary">Export Markets (10-15%)</strong>
+                <ul>
+                    <li><strong>Middle East:</strong> USD 45B market, Vision 2030</li>
+                    <li><strong>Africa:</strong> USD 20B emerging market</li>
+                    <li><strong>Southeast Asia:</strong> USD 35B opportunity</li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <h3 class="section-title">Niche Market Potential</h3>
+            <div class="chart" style="margin-bottom: 15px;">
+                <div class="metric">₹15-25 Cr</div>
+                <div class="metric-label">Demister Pads Market<br>Potential (2-3% share)</div>
+            </div>
+            <div class="chart" style="margin-bottom: 15px;">
+                <div class="metric">₹12.6 Cr</div>
+                <div class="metric-label">India Structured<br>Packings Market</div>
+            </div>
+            <div class="chart">
+                <div class="metric">₹10.08 Cr</div>
+                <div class="metric-label">Column Internals<br>Market Size</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Major Projects & Clientele</h3>
+        <div class="two-column">
+            <div class="column">
+                <strong>Recent Major Projects:</strong>
+                <ul>
+                    <li>Methanol-Water Separation System - Ambani (₹50L)</li>
+                    <li>Cumyl Hydroperoxide Plant - Ambani (₹25L)</li>
+                    <li>Water Nozzles - Modern Coach Factory (₹13.5L)</li>
+                    <li>Gas Dehydration - Quality Wire, Bahrain (₹4.5L)</li>
+                </ul>
+            </div>
+            <div class="column">
+                <strong>Distinguished Clients:</strong>
+                <ul>
+                    <li><strong>Domestic:</strong> Ambani Orgochem, IOCL, Lupin Ltd</li>
+                    <li><strong>Export:</strong> Tatweer Petroleum (Bahrain), Naeel Al Metals (Saudi)</li>
+                    <li><strong>Govt/PSU:</strong> Indian Railways, IOCL</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Investment Requirements & Expansion Plan</h3>
+        <table class="investment-table">
+            <tr>
+                <th>Investment Category</th>
+                <th>Amount (₹ Lakhs)</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><strong>Machinery & Equipment</strong></td>
+                <td class="brand-primary" style="font-weight: bold;">25.00</td>
+                <td>Wire knitting machine, structured packing line, dies</td>
+            </tr>
+            <tr>
+                <td><strong>Infrastructure Development</strong></td>
+                <td class="brand-primary" style="font-weight: bold;">25.00</td>
+                <td>Factory setup, utilities, testing equipment</td>
+            </tr>
+            <tr>
+                <td><strong>Working Capital</strong></td>
+                <td class="brand-secondary" style="font-weight: bold;">30.00</td>
+                <td>Raw materials, WIP financing, operating buffer</td>
+            </tr>
+            <tr style="background: #f1f5f9; font-weight: bold;">
+                <td><strong>Total Investment</strong></td>
+                <td class="brand-primary">50.00</td>
+                <td>Complete expansion package</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="two-column">
+        <div class="column">
+            <h3 class="section-title">Funding Structure</h3>
+            <div class="chart">
+                <div class="metric brand-primary">₹35L (70%)</div>
+                <div class="metric-label">Tijarat Rabeha<br>Support</div>
+            </div>
+            <div class="chart">
+                <div class="metric brand-secondary">₹15L (30%)</div>
+                <div class="metric-label">Proprietary<br>Contribution</div>
+            </div>
+        </div>
+        <div class="column">
+            <h3 class="section-title">Expected Outcomes</h3>
+            <ul>
+                <li><strong>Turnover Target:</strong> ₹140L by FY 2028-29</li>
+                <li><strong>Export Growth:</strong> 15-18% of revenue</li>
+                <li><strong>Employment:</strong> 5-7 skilled jobs</li>
+                <li><strong>Manufacturing:</strong> In-house production capability</li>
+                <li><strong>Certifications:</strong> ISO 9001:2015</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+    <div class="section">
+        <h2 class="section-title">Financial Projections & Strategic Value</h2>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">5-Year Revenue & Profitability Forecast</h3>
+        <table class="investment-table">
+            <tr>
+                <th>Financial Year</th>
+                <th>Revenue (₹ Lakhs)</th>
+                <th>Growth %</th>
+                <th>Gross Margin %</th>
+                <th>PAT (₹ Lakhs)</th>
+            </tr>
+            <tr>
+                <td>FY 2025-26</td>
+                <td>66</td>
+                <td>32%</td>
+                <td>39%</td>
+                <td>6.6</td>
+            </tr>
+            <tr>
+                <td>FY 2026-27</td>
+                <td>88</td>
+                <td>33%</td>
+                <td>41%</td>
+                <td>10.6</td>
+            </tr>
+            <tr>
+                <td>FY 2027-28</td>
+                <td>113</td>
+                <td>28%</td>
+                <td>42%</td>
+                <td>15.8</td>
+            </tr>
+            <tr style="background: #f1f5f9; font-weight: bold;">
+                <td>FY 2028-29</td>
+                <td class="brand-primary">140</td>
+                <td>24%</td>
+                <td>43%</td>
+                <td class="brand-accent">22.4</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="two-column">
+        <div class="column">
+            <h3 class="section-title">Why H&MT is Strategic</h3>
+            <ul>
+                <li><strong>Proven Execution:</strong> 10x growth demonstrates capability</li>
+                <li><strong>Niche Leadership:</strong> Specialized high-value products</li>
+                <li><strong>Export Ready:</strong> International quality standards</li>
+                <li><strong>Scalable Model:</strong> High operational leverage</li>
+                <li><strong>Risk Diversification:</strong> Multiple industries & geographies</li>
+                <li><strong>Technical Moat:</strong> 15+ years domain expertise</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h3 class="section-title">Partnership Benefits</h3>
+            <ul>
+                <li><strong>Financial Returns:</strong> Growing profitable business</li>
+                <li><strong>Market Access:</strong> Export opportunities in Middle East</li>
+                <li><strong>Social Impact:</strong> Skill development, job creation</li>
+                <li><strong>Community Development:</strong> Supporting entrepreneurship</li>
+                <li><strong>Strategic Alignment:</strong> Make in India initiatives</li>
+                <li><strong>Technology Transfer:</strong> International best practices</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-title">Support Required from Tijarat Rabeha</h3>
+        <div class="two-column">
+            <div class="column">
+                <strong class="brand-primary">Financial Support:</strong>
+                <ul>
+                    <li>Initial Capital: ₹25 lakhs for machinery & infrastructure</li>
+                    <li>Working Capital: ₹10 lakhs credit facility</li>
+                </ul>
+                <strong class="brand-secondary">Mentorship & Guidance:</strong>
+                <ul>
+                    <li>Market expansion strategies</li>
+                    <li>Operational excellence</li>
+                    <li>Export development</li>
+                </ul>
+            </div>
+            <div class="column">
+                <strong class="brand-accent">Network Access:</strong>
+                <ul>
+                    <li>Industry connections & client introductions</li>
+                    <li>Middle East business community</li>
+                    <li>Technology partnerships</li>
+                    <li>Trade mission support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-box" style="background: linear-gradient(135deg, #2E8B8B 0%, #1E5F7A 100%);">
+        <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Investment Opportunity</div>
+        <div>₹35 Lakhs Investment • 70% Partnership • High Growth Potential</div>
+        <div style="margin-top: 10px; font-size: 14px;">Target: ₹140L Revenue by FY 2028-29</div>
+    </div>
+
+    <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-details">
+            <div>
+                <strong>Website:</strong><br>
+                www.hnmtinternational.com
+            </div>
+            <div>
+                <strong>Email:</strong><br>
+                info@hnmtinternational.com
+            </div>
+            <div>
+                <strong>Proprietor:</strong><br>
+                Mr. Abizer Jamali
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
